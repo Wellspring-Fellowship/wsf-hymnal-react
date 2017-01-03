@@ -2,12 +2,12 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 class SongPage extends React.Component {
-  debugger;
+
   render() {
     return (
       <div>
-        <h3>{this.props.song.title}</h3>
-        <p>Song: {this.props.song.content}</p>
+        <h3>{this.props.song.song} : {this.props.song.title}</h3>
+        <div dangerouslySetInnerHTML={createMarkup(this.props.song.content)}/>
       </div>
     );
   }
@@ -25,5 +25,10 @@ function mapStateToProps(state, ownProps) {
   }
   return {song: song};
 };
+
+// because the text we are getting from the JSON includes HTML tags
+function createMarkup(props) {
+  return {__html: props};
+}
 
 export default connect(mapStateToProps)(SongPage);
