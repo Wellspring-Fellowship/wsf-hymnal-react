@@ -1,0 +1,33 @@
+{
+  "name": "wsf-hymnal-react",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.8.4",
+    "redux-devtools": "^3.3.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "immutability-helper": "^2.0.0",
+    "material-ui": "^0.16.6",
+    "react": "^15.4.1",
+    "react-addons-css-transition-group": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-fetch": "0.0.9",
+    "react-material-dashboard": "^0.5.1",
+    "react-redux": "^5.0.1",
+    "react-router": "^3.0.0",
+    "react-router-redux": "^4.0.7",
+    "react-tap-event-plugin": "^2.0.1",
+    "react-toolbox": "^1.3.3",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
+    "roboto-fontface": "^0.6.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
