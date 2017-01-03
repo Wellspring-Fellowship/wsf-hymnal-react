@@ -1,12 +1,11 @@
 import React, {PropTypes} from 'react';
-
+import {Link} from 'react-router';
 const SongList = ({songs}) => {
-
   return (
       <ul className="list-group">
         {songs.map(song =>
           <li className="list-group-item" key={song.title}>
-            {song.title}
+            <Link to={'/songs/' + song.song}>{song.song} - {song.title}</Link>
           </li>
         )}
       </ul>

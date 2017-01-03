@@ -12,11 +12,12 @@ import './style.css';
 class SongsPage extends Component {
 
   render() {
+    const songs = this.props.songs;
     return (
       <div>
         <h1>Songs</h1>
         <div>
-          <SongList songs={this.props.songs} />
+          <SongList songs={songs} />
         </div>
       </div>
     );
@@ -24,14 +25,21 @@ class SongsPage extends Component {
 }
 
 SongsPage.propTypes = {
-  songs: PropTypes.array.isRequired
+  songs: PropTypes.array.isRequired,
+  children: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
   // state = {cats: [{id:1, name: "Maru"}, etc.]}
-  return {
-    songs: state.songs
-  };
+  if(state.songs.length > 0) {
+    return {
+      songs: state.songs
+    };
+  } else {
+    return {
+      songs: [{title: '', song: '', content: ''}]
+    }
+  }
 }
 
 export default connect(mapStateToProps)(SongsPage);
