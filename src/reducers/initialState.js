@@ -1,4 +1,3 @@
-export default {  
-  songs: [],
-  hobbies: []
+export default {
+  songs: []
 }
