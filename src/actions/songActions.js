@@ -8,7 +8,7 @@ export function loadSongsSuccess(songs) {
 export function loadSongs() {
   return function(dispatch) {
     return getAllSongs().then(songs => {
-      dispatch(loadSongsSuccess(songs));
+      dispatch(loadSongsSuccess(songs.songs));
     }).catch(error => {
       throw(error);
     });
