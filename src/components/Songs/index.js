@@ -10,14 +10,25 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './style.css';
 
 class SongsPage extends Component {
+  constructor(props) {
+      super(props);
+      // This binding is necessary to make `this` work in the callback
+      this.state = {exampleState: 'Initial State'};
+    }
+
+  handleClick = () => {
+    console.log('this is:', this);
+    this.setState({songs: this.props.songs.filter((song) => song.title.startsWith('Wonderful'))})
+  }
   render() {
-
-    const songs = this.props.songs.filter((song) => song.title.startsWith('Wonderful'));
-
+    const songs = this.props.songs
     return (
       <div>
         <h1>Songs</h1>
         <div>
+          <button onClick={(e) => this.handleClick(e)}>
+                Lazer Nipples
+          </button>
           <SearchBar />
           <SongList songs={songs} />
         </div>
@@ -32,6 +43,7 @@ SongsPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+  console.log("mapStateToProps " + state);
   // state = {cats: [{id:1, name: "Maru"}, etc.]}
   if(state.songs.length > 0) {
     return {
@@ -54,7 +66,7 @@ class SearchBar extends React.Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
-    
+
   }
 
   render() {
