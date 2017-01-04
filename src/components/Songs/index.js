@@ -12,25 +12,22 @@ import './style.css';
 class SongsPage extends Component {
   constructor(props) {
       super(props);
-      // This binding is necessary to make `this` work in the callback
-      this.state = {exampleState: 'Initial State'};
+      this.state = {
+        query: '',
+      };
     }
 
-  handleClick = () => {
-    console.log('this is:', this);
-    this.setState({songs: this.props.songs.filter((song) => song.title.startsWith('Wonderful'))})
+  queryHandler = (query) => {
+    this.setState({ query });
   }
+
   render() {
-    const songs = this.props.songs
     return (
       <div>
         <h1>Songs</h1>
         <div>
-          <button onClick={(e) => this.handleClick(e)}>
-                Lazer Nipples
-          </button>
-          <SearchBar />
-          <SongList songs={songs} />
+          <SearchBar queryHandler={this.queryHandler} />
+          <SongList songs={this.props.songs.filter(song => song.title.toLowerCase().indexOf(this.state.query) >= 0)} />
         </div>
       </div>
     );
@@ -60,13 +57,11 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({value: event.target.value});
-
+    this.props.queryHandler(event.target.value.toLowerCase());
   }
 
   render() {
