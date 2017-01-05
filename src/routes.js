@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'react-router';
+import { Router, Route, IndexRoute, IndexRedirect } from 'react-router';
 
 import App from './components/App';
 import About from './components/About';
@@ -9,7 +9,7 @@ import SongPage from './components/Song';
 
 const Routes = (props) => (
   <Router {...props}>
-    <Route path="/" component={App} />
+    <Route path="/" component={Songs} />
     <Route path="/songs" component={Songs} />
       <Route path="/songs/:song" component={SongPage} />
     <Route path="/about" component={About} />
