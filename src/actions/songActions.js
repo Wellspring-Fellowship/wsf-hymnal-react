@@ -16,7 +16,7 @@ export function loadSongs() {
 }
 
 export function getAllSongs() {
-  return fetch('http://wellspring-fellowship.github.io/site.json').then(response => {
+  return fetch('https://wellspring-fellowship.github.io/site.json').then(response => {
     return response.json();
   }).catch(error => {
     return error;
