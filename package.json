@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "react-deploy-s3": "^1.1.1",
     "react-scripts": "0.8.4",
     "redux-devtools": "^3.3.1"
   },
