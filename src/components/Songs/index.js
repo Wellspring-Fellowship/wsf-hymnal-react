@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import * as songActions from '../../actions/songActions';
 import SongList from './SongList';
+import {Card, Container, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './style.css';
