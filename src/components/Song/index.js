@@ -1,14 +1,21 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Button} from 'react';
 import {connect} from 'react-redux';
+import { browserHistory } from 'react-router';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class SongPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>{this.props.song.song} : {this.props.song.title}</h3>
-        <div dangerouslySetInnerHTML={createMarkup(this.props.song.content)}/>
-      </div>
+      <Card>
+        <CardTitle subtitle={this.props.song.song} title={this.props.song.title}>
+        </CardTitle>
+        <CardText dangerouslySetInnerHTML={createMarkup(this.props.song.content)}/>
+        <CardActions>
+          <RaisedButton label="Go Back" primary={true} onClick={goBack} />
+        </CardActions>
+      </Card>
     );
   }
 };
@@ -16,6 +23,13 @@ class SongPage extends React.Component {
 SongPage.propTypes = {
   song: PropTypes.object.isRequired,
 };
+
+// go back to previous page.
+function goBack(e)
+{
+  e.preventDefault();
+  browserHistory.goBack();
+}
 
 function mapStateToProps(state, ownProps) {
   let song = {song: '', title: '', content: ''};
