@@ -6,9 +6,17 @@ import {connect} from 'react-redux';
 import * as songActions from '../../actions/songActions';
 import SongList from './SongList';
 import {Card, Container, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './style.css';
+
+const style = {
+  marginLeft: 20,
+};
 
 class SongsPage extends Component {
   constructor(props) {
@@ -24,13 +32,16 @@ class SongsPage extends Component {
 
   render() {
     return (
+      <Paper zDepth={2}>
       <div>
         <h1>Songs</h1>
         <div>
           <SearchBar queryHandler={this.queryHandler} />
+          <Divider />
           <SongList songs={this.props.songs.filter(song => song.title.toLowerCase().indexOf(this.state.query) >= 0)} />
         </div>
       </div>
+    </Paper>
     );
   }
 }
@@ -68,7 +79,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <form>
-        <input type="text" placeholder="Search..." value={this.state.value} onChange={this.handleChange} />
+        <TextField hintText="Search....." style={style} underlineShow={false} onChange={this.handleChange} />
       </form>
     );
   }

@@ -1,22 +1,24 @@
 import React, { PropTypes, Component } from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
+import {Card, Container, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
+import './style.css';
 
 class SongList extends Component {
   render() {
-    //var songs = this.state.songs; //.filter((song) => song.title.startsWith('Wonderful'));
-    //const songs = this.props.songs;
-    //console.log("exampleState " + this.state.exampleState);
   return (
     <div>
-    <ul className="list-group">
+      <list>
         {this.props.songs.map(song =>
-          <li className="list-group-item" key={song.title}>
-            <Link to={'/songs/' + song.song}>{song.song} - {song.title}</Link>
-          </li>
+          <Link to={'/songs/' + song.song}>
+            <ListItem primaryText={song.title} secondaryText={song.song}></ListItem>
+          </Link>
         )}
-      </ul>
-      </div>
+      </list>
+    </div>
   );
 }
 };

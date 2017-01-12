@@ -2,20 +2,22 @@ import React, {PropTypes, Button} from 'react';
 import {connect} from 'react-redux';
 import { browserHistory } from 'react-router';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 
 class SongPage extends React.Component {
 
   render() {
     return (
+      <Paper zDepth={2}>
       <Card>
-        <CardTitle subtitle={this.props.song.song} title={this.props.song.title}>
-        </CardTitle>
+        <CardTitle subtitle={this.props.song.song} title={this.props.song.title}></CardTitle>
         <CardText dangerouslySetInnerHTML={createMarkup(this.props.song.content)}/>
         <CardActions>
           <RaisedButton label="Go Back" primary={true} onClick={goBack} />
         </CardActions>
       </Card>
+      </Paper>
     );
   }
 };
